@@ -1,0 +1,49 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models\player\custom_player\legacy\gxp\valorant\viper\lq\gxp_body"
+    "$bumpmap" "models\player\custom_player\legacy\gxp\valorant\viper\lq\gxp_body_n"
+
+	"$phong" "1"
+	"$phongboost" ".5"
+	"$phongexponent" "50"
+	"$phongfresnelranges" "[.2 .8 .7]"
+	"$alpha" 1.0
+	"$player_distance" 0.0
+	"$same_team" "0"
+	"$temp_1" "0.5"
+	"$temp_2" "1"
+	"$temp_3" "0"
+	"Proxies"
+	{
+		"PlayerTeamMatch"
+		{
+			"resultVar" "$same_team" 		//0 different, 1 same team
+		}
+		"PlayerProximity"
+		{
+			"scale" "0.007"
+			"resultVar" "$player_distance" 
+		}
+		"Subtract"
+		{
+			"srcVar1" "$player_distance"
+			"srcVar2" "$temp_1"
+			"resultVar" "$player_distance"	
+		}
+		"LessOrEqual"
+		{
+			"srcVar1" "$same_team"			// if $same_team
+			"srcVar2" "$temp_1"				// == 1
+			"resultVar" "$temp_3"			// { $temp_3 =
+          	"greaterVar" "$player_distance"	// $player_distance }
+        	"LessEqualVar" "$temp_2"			// else { $temp_3 = 1 }
+		}
+		"Clamp"
+		{
+			"min" "0.05"
+			"max" "1.0"
+			"srcVar1" "$temp_3"
+			"resultVar" "$alpha"
+		}
+	}
+}

@@ -1,0 +1,98 @@
+"UnlitGeneric"
+{
+	"$basetexture" "models\player\custom_player\legacy\gxp\fallout\fo3_tesla_armor\csgo_fx"
+	"$additive" "1"
+	"$model" "1"
+	"$translucent" "1"
+	"$nocull" "1"
+
+	"csgo_port_var" "0"
+	"csgo_port_var2" "313.37"
+	"csgo_port_var3" "0"
+	"csgo_port_var4" "27.37"
+	"csgo_port_var5" "0"
+	"$sine_alpha" 0
+	"$clamp_alpha" 0
+	"$alpha" 1.0
+	"$player_distance" 0.0
+	"$same_team" "0"
+	"$temp_1" "0.5"
+	"$temp_2" "1"
+	"$temp_3" "0"
+
+	"Proxies"
+	{
+		"EntityRandom"
+		{
+			"scale" "1"
+			"resultVar"	"csgo_port_var"
+		}
+		"Multiply"
+		{
+			"srcVar1" "csgo_port_var"
+			"srcVar2" "csgo_port_var2"
+			"resultVar"	"csgo_port_var3"
+		}
+		"Multiply"
+		{
+			"srcVar1" "csgo_port_var"
+			"srcVar2" "csgo_port_var4"
+			"resultVar"	"csgo_port_var5"
+		}
+		"Sine"
+		{
+			"sineperiod" "csgo_port_var5"
+			"sinemin" "0"
+			"sinemax" "1"
+			"resultVar"	"$sine_alpha"
+		}
+		"TextureScroll"
+		{
+			"textureScrollVar" "$basetexturetransform"
+			"textureScrollRate"	"csgo_port_var"
+			"textureScrollAngle" "csgo_port_var3"
+		}
+		"AnimatedTexture"
+		{
+			"animatedtexturevar" "$basetexture"
+			"animatedtextureframenumvar" "$frame"
+			"animatedtextureframerate" "6.7"
+		}
+		"PlayerTeamMatch"
+		{
+			"resultVar" "$same_team" 		//0 different, 1 same team
+		}
+		"PlayerProximity"
+		{
+			"scale" "0.007"
+			"resultVar" "$player_distance" 
+		}
+		"Subtract"
+		{
+			"srcVar1" "$player_distance"
+			"srcVar2" "$temp_1"
+			"resultVar" "$player_distance"	
+		}
+		"LessOrEqual"
+		{
+			"srcVar1" "$same_team"			// if $same_team
+			"srcVar2" "$temp_1"				// == 1
+			"resultVar" "$temp_3"			// { $temp_3 =
+          	"greaterVar" "$player_distance"	// $player_distance }
+        	"LessEqualVar" "$temp_2"			// else { $temp_3 = 1 }
+		}
+		"Clamp"
+		{
+			"min" "0.05"
+			"max" "1.0"
+			"srcVar1" "$temp_3"
+			"resultVar" "$clamp_alpha"
+		}
+		"Multiply"
+		{
+			"srcVar1" "$sine_alpha"
+			"srcVar2" "$clamp_alpha"
+			"resultVar"	"$alpha"
+		}
+	}
+}
