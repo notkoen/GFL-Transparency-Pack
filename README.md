@@ -1,7 +1,7 @@
 
 # GFL Transparency Materials
 
-(Last updated: <t:1675966721:F>)
+(Last updated: Thursday February 9 2023)
 
 Repository dedicated to publicly storing my edits to GFL CS:GO ZE's transparent models pack found on the forums.
 
