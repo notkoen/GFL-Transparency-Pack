@@ -1,22 +1,26 @@
 "VertexLitGeneric"
 {
-       	"$baseTexture" "models/player/custom/GFLclan/mcwhite/MKVI"
+	"$baseTexture" "models/player/custom/GFLclan/mcwhite/MKVI"
 
 	"$bumpmap" "models/player/custom/GFLclan/mcwhite/MKVI_bump"
 
 	"$phong" "1"
-	"$phongboost"	"7"
-	"$phongfresnelranges"	"[0.05 0.5 1]"
+	"$phongboost" "7"
+	"$phongfresnelranges" "[0.05 0.5 1]"
+
 	"$detail" "models/player/custom/GFLclan/mcwhite/detail"
-	"$detailscale" 10
+	"$detailscale" "10"
+
 	"$phongexponenttexture" "models/player/custom/GFLclan/mcwhite/MKVI_exp"
-	"$phongexponent" 10
+	"$phongexponent" "10"
+
 	"$envmap" "env_cubemap"
 	"$envmaptint" "[ 0.0 0.0 0.0 ]"
-	"$normalmapalphaenvmapmask" 1
-	"$halflambert" 1
-	"$alpha" 1.0
-	"$player_distance" 0.0
+	"$normalmapalphaenvmapmask" "1"
+	"$halflambert" "1"
+
+	"$alpha" "1.0"
+	"$player_distance" "0.0"
 	"$same_team" "0"
 	"$temp_1" "0.5"
 	"$temp_2" "1"
@@ -25,26 +29,26 @@
 	{
 		"PlayerTeamMatch"
 		{
-			"resultVar" "$same_team" 		//0 different, 1 same team
+			"resultVar" "$same_team"
 		}
 		"PlayerProximity"
 		{
 			"scale" "0.007"
-			"resultVar" "$player_distance" 
+			"resultVar" "$player_distance"
 		}
 		"Subtract"
 		{
 			"srcVar1" "$player_distance"
 			"srcVar2" "$temp_1"
-			"resultVar" "$player_distance"	
+			"resultVar" "$player_distance"
 		}
 		"LessOrEqual"
 		{
-			"srcVar1" "$same_team"			// if $same_team
-			"srcVar2" "$temp_1"				// == 1
-			"resultVar" "$temp_3"			// { $temp_3 =
-          	"greaterVar" "$player_distance"	// $player_distance }
-        	"LessEqualVar" "$temp_2"			// else { $temp_3 = 1 }
+			"srcVar1" "$same_team"
+			"srcVar2" "$temp_1"
+			"resultVar" "$temp_3"
+			"greaterVar" "$player_distance"
+			"LessEqualVar" "$temp_2"
 		}
 		"Clamp"
 		{

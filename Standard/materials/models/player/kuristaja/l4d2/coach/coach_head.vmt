@@ -1,17 +1,18 @@
 vertexlitgeneric
 {
-	$baseTexture "models\player\kuristaja\l4d2\coach\coach_head"
-	$bumpmap "models\player\kuristaja\l4d2\coach\coach_head_normal"
+	"$baseTexture" "models\player\kuristaja\l4d2\coach\coach_head"
+	"$bumpmap" "models\player\kuristaja\l4d2\coach\coach_head_normal"
 
-	$phong 1
-	$phongboost "1.4"
-	$phongexponenttexture "models\player\kuristaja\l4d2\coach\coach_head_exp"
-	$phongtint "[.85 .85 1]"
-	$phongfresnelranges "[.2 .5 5]"
-	$nodecal 1
-	$halflambert 0
-	"$alpha" 1.0
-	"$player_distance" 0.0
+	"$phong" "1"
+	"$phongboost" "1.4"
+	"$phongexponenttexture" "models\player\kuristaja\l4d2\coach\coach_head_exp"
+	"$phongtint" "[.85 .85 1]"
+	"$phongfresnelranges" "[.2 .5 5]"
+	"$nodecal" "1"
+	"$halflambert" "0"
+
+	"$alpha" "1.0"
+	"$player_distance" "0.0"
 	"$same_team" "0"
 	"$temp_1" "0.5"
 	"$temp_2" "1"
@@ -20,26 +21,26 @@ vertexlitgeneric
 	{
 		"PlayerTeamMatch"
 		{
-			"resultVar" "$same_team" 		//0 different, 1 same team
+			"resultVar" "$same_team"
 		}
 		"PlayerProximity"
 		{
 			"scale" "0.007"
-			"resultVar" "$player_distance" 
+			"resultVar" "$player_distance"
 		}
 		"Subtract"
 		{
 			"srcVar1" "$player_distance"
 			"srcVar2" "$temp_1"
-			"resultVar" "$player_distance"	
+			"resultVar" "$player_distance"
 		}
 		"LessOrEqual"
 		{
-			"srcVar1" "$same_team"			// if $same_team
-			"srcVar2" "$temp_1"				// == 1
-			"resultVar" "$temp_3"			// { $temp_3 =
-          	"greaterVar" "$player_distance"	// $player_distance }
-        	"LessEqualVar" "$temp_2"			// else { $temp_3 = 1 }
+			"srcVar1" "$same_team"
+			"srcVar2" "$temp_1"
+			"resultVar" "$temp_3"
+			"greaterVar" "$player_distance"
+			"LessEqualVar" "$temp_2"
 		}
 		"Clamp"
 		{

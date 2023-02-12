@@ -1,19 +1,20 @@
 "VertexLitGeneric"
 {
-	"$basetexture"			"models/player/kuristaja/deadpool/deadpool_misc_color"
-	"$bumpmap"				"models/player/kuristaja/deadpool/deadpool_misc_norm"
+	"$basetexture" "models/player/kuristaja/deadpool/deadpool_misc_color"
+	"$bumpmap" "models/player/kuristaja/deadpool/deadpool_misc_norm"
 
-	"$phong"				"1"
-	"$PhongAlbedoTint"		"1"
-	"$phongexponenttexture"	"models/player/kuristaja/deadpool/deadpool_misc_exp2"
-	"$phongboost"			"2"
-	"$phongfresnelranges"	"[0.1 .75 4]"
+	"$phong" "1"
+	"$PhongAlbedoTint" "1"
+	"$phongexponenttexture" "models/player/kuristaja/deadpool/deadpool_misc_exp2"
+	"$phongboost" "2"
+	"$phongfresnelranges" "[0.1 .75 4]"
 
-	"$rimlight"				"1"
-	"$rimlightexponent"		"8"
-	"$rimlightboost"		"1"
-	"$alpha" 1.0
-	"$player_distance" 0.0
+	"$rimlight" "1"
+	"$rimlightexponent" "8"
+	"$rimlightboost" "1"
+
+	"$alpha" "1.0"
+	"$player_distance" "0.0"
 	"$same_team" "0"
 	"$temp_1" "0.5"
 	"$temp_2" "1"
@@ -22,26 +23,26 @@
 	{
 		"PlayerTeamMatch"
 		{
-			"resultVar" "$same_team" 		//0 different, 1 same team
+			"resultVar" "$same_team"
 		}
 		"PlayerProximity"
 		{
 			"scale" "0.007"
-			"resultVar" "$player_distance" 
+			"resultVar" "$player_distance"
 		}
 		"Subtract"
 		{
 			"srcVar1" "$player_distance"
 			"srcVar2" "$temp_1"
-			"resultVar" "$player_distance"	
+			"resultVar" "$player_distance"
 		}
 		"LessOrEqual"
 		{
-			"srcVar1" "$same_team"			// if $same_team
-			"srcVar2" "$temp_1"				// == 1
-			"resultVar" "$temp_3"			// { $temp_3 =
-          	"greaterVar" "$player_distance"	// $player_distance }
-        	"LessEqualVar" "$temp_2"			// else { $temp_3 = 1 }
+			"srcVar1" "$same_team"
+			"srcVar2" "$temp_1"
+			"resultVar" "$temp_3"
+			"greaterVar" "$player_distance"
+			"LessEqualVar" "$temp_2"
 		}
 		"Clamp"
 		{

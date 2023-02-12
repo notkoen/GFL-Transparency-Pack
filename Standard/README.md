@@ -32,7 +32,7 @@ To add standard transparency to future playermodels, add the following lines/pro
             "srcVar1" "$same_team"              // if $same_team
             "srcVar2" "$temp_1"                 // == 1
             "resultVar" "$temp_3"               // { $temp_3 =
-            "greaterVar" "$player_distance"   // $player_distance }
+            "greaterVar" "$player_distance"     // $player_distance }
             "LessEqualVar" "$temp_2"            // else { $temp_3 = 1 }
         }
         "Clamp"

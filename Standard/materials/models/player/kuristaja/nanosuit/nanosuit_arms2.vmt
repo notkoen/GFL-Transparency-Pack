@@ -1,25 +1,24 @@
 "VertexLitGeneric"
 {
-	// METAL
+	"$basetexture" "models/player/kuristaja/nanosuit/nanosuit_arms"
+	"$bumpmap" "models/player/kuristaja/nanosuit/nanosuit_arms_normal"
 
-	"$basetexture" 			"models/player/kuristaja/nanosuit/nanosuit_arms"
-	"$bumpmap" 			"models/player/kuristaja/nanosuit/nanosuit_arms_normal"
+	"$phong" "1"
+	"$basemapalphaphongmask" "1"
+	"$phongexponent" "40"
+	"$phongboost" ".7"
 
-	"$phong" 			"1"
-	"$basemapalphaphongmask" 		"1"	// affects envmap too
-	"$phongexponent" 			"40"
-	"$phongboost"			".7"
+	"$envmap" "env_cubemap"
+	"$basealphaenvmapmask" "1"
+	"$envmaptint" "[.5 .5 .4]"
+	"$envmapcontrast" ".45"
 
-	"$envmap" 			"env_cubemap"
-	"$basealphaenvmapmask"		 "1"
-	"$envmaptint" 			"[.5 .5 .4]"
-	"$envmapcontrast" 			".45"
+	"$rimlight" "1"
+	"$rimlightexponent" "15"
+	"$rimlightboost" ".2"
 
-	"$rimlight"              			 "1"
-	"$rimlightexponent"			"15"
-	"$rimlightboost"			".2"
-	"$alpha" 1.0
-	"$player_distance" 0.0
+	"$alpha" "1.0"
+	"$player_distance" "0.0"
 	"$same_team" "0"
 	"$temp_1" "0.5"
 	"$temp_2" "1"
@@ -28,26 +27,26 @@
 	{
 		"PlayerTeamMatch"
 		{
-			"resultVar" "$same_team" 		//0 different, 1 same team
+			"resultVar" "$same_team"
 		}
 		"PlayerProximity"
 		{
 			"scale" "0.007"
-			"resultVar" "$player_distance" 
+			"resultVar" "$player_distance"
 		}
 		"Subtract"
 		{
 			"srcVar1" "$player_distance"
 			"srcVar2" "$temp_1"
-			"resultVar" "$player_distance"	
+			"resultVar" "$player_distance"
 		}
 		"LessOrEqual"
 		{
-			"srcVar1" "$same_team"			// if $same_team
-			"srcVar2" "$temp_1"				// == 1
-			"resultVar" "$temp_3"			// { $temp_3 =
-          	"greaterVar" "$player_distance"	// $player_distance }
-        	"LessEqualVar" "$temp_2"			// else { $temp_3 = 1 }
+			"srcVar1" "$same_team"
+			"srcVar2" "$temp_1"
+			"resultVar" "$temp_3"
+			"greaterVar" "$player_distance"
+			"LessEqualVar" "$temp_2"
 		}
 		"Clamp"
 		{
